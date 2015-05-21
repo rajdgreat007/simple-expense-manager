@@ -1,0 +1,285 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300&subset=latin,latin-ext);
+* {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  color: #F5F7FA;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-top: 20px;
+}
+
+h2 {
+  margin: 20px 0 30px;
+  font-weight: 100;
+  text-align:left;
+}
+
+body {
+  background: #26c281;
+}
+
+table {
+  text-align: left;
+  width: 900px;
+  margin: 0 auto 30px;
+  border-radius: 0 0 3px 3px;
+  background-color: #fff;
+}
+table th {
+  padding: 10px;
+}
+table tr:nth-child(odd) {
+  background-color: #F5F7FA;
+}
+table td {
+  padding: 10px 15px;
+  color: #434A54;
+  font-size: 14px;
+}
+table td:last-child, table td:nth-last-child(2) {
+  text-align: center;
+  cursor: pointer;
+}
+
+.amount {
+  color: #e74c3c;
+  text-align: right;
+}
+
+#button {
+  position: relative;
+  top: 0;
+  color: #F5F7FA;
+  padding: 10px 20px;
+  text-align: center;
+  line-height: 24px;
+  width: 200px;
+  background-color: #19b5fe;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 20px auto 20px;
+  box-shadow: 0 3px #4A89DC;
+  transition: 0.1s ease;
+  display: block
+}
+#button:active {
+  position: relative;
+  box-shadow: 0 0px #4A89DC;
+  top: 3px;
+  box-shadow: 0 0;
+}
+
+#form-box {
+  width: 870px;
+  margin: 0 auto 30px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.add-btn{
+  position: absolute;
+  top:0px;
+  right:25px;
+}
+.add-text{
+  position: absolute;
+  left:-100px;
+  color:#fff;
+  top:11px;
+  opacity:1;
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -ms-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
+.fa-circle{
+  color:#fff;
+}
+
+.fa-plus{
+  cursor:pointer;
+  color:#26c281;
+}
+
+.friend-input{
+  position:absolute;
+  top:2px;
+  right:25px;
+  width:0px;
+  height:37px;
+  background-color:#fff;
+  border-radius: 2px 0 0 2px;
+  overflow:hidden;
+  -webkit-transition: width 0.3s ease;
+  -moz-transition: width 0.3s ease;
+  -ms-transition: width 0.3s ease;
+  -o-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+
+.add-btn.active .friend-input{
+  width:200px;
+  -webkit-transition: width 0.4s ease;
+  -moz-transition: width 0.4s ease;
+  -ms-transition: width 0.4s ease;
+  -o-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+}
+
+.add-btn.active .add-text{
+  opacity:0;
+}
+
+.friend-input div{
+  padding:2px 18px 2px 5px;
+}
+
+.friend-input input{
+  width:100%;
+  height:32px;
+  padding:5px;
+  border:1px solid rgba(200,200,200,0.5);
+}
+
+.friend-input input:focus, form input:focus, form select:focus, .filter-option select:focus{
+  box-shadow: 0px 0px 3px #26c281 inset;
+  outline:none;
+}
+
+form {
+  color: #fff;
+  margin: auto;
+}
+form select, form input {
+  margin-bottom: 30px;
+  color: #434A54;
+  padding: 10px;
+  width: 250px;
+  border-radius: 3px;
+  border: 0;
+  vertical-align: top;
+}
+form selectactive, form inputactive {
+  border: 1px solid #26c281;
+  transition: 0.2s ease;
+}
+form div {
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+form span {
+  font-size: 1.2em;
+  font-weight: 100;
+  display: inline-block;
+  width: 150px;
+}
+form .error-msg {
+  position: absolute;
+  color: #e74c3c;
+  bottom: 10px;
+  left: 0;
+  font-size: 12px;
+}
+
+#type {
+  width: 50px;
+}
+
+#date {
+  width: 140px;
+}
+
+#amount {
+  width: 60px;
+}
+
+.table-btn {
+  width: 40px;
+}
+
+#if-empty {
+  text-align: center;
+}
+
+.center {
+  margin: auto;
+  text-align: center;
+}
+
+.filter-block{
+  width:900px;
+  margin:auto;
+  background-color:#D2D6DD;
+  border-radius:3px 3px 0 0;
+  height:40px;
+}
+.filter-option{
+  width:49%;
+  display:inline-block;
+  height:100%;
+  padding-top:6px;
+}
+.filter-option:first-child{
+  border-right:1px solid #888;
+}
+.filter-option span{
+  text-align:right;
+  display:inline-block;
+  padding:0 15px;
+  font-weight:600
+}
+.filter-option select{
+  width:30%;
+  height:30px;
+  border:1px solid rgba(200,200,200,0.6);
+  border-radius:3px;
+}
+
+#add-frnd{
+    position: absolute;
+    right: 25px;
+    top: 0px;
+}
+
+#add-frnd input{
+    height: 34px;
+    padding: 5px;
+}
+
+.select-button{
+    height: 38px;
+    width: 46px;
+}
+
+.error{
+    font-size: 25px;
+    color: #f00;
+    background: #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+}
+
+/*angular datepicker css*/
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+}
+.partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+}
