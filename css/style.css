@@ -263,10 +263,7 @@ form .error-msg {
 }
 
 .error{
-    font-size: 25px;
     color: #f00;
-    background: #ccc;
-    border-radius: 10px;
     text-align: center;
     font-weight: bold;
     padding: 5px;

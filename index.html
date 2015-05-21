@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Simple expense manager project - CodePen</title>
+    <title>Simple expense manager</title>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" media="screen" type="text/css"/>
 </head>
 
 <body>
-<h1>Simple expense manager project</h1>
+<h1>Simple expense manager</h1>
 
 <div id="form-box" ng-controller="ExpenseController">
-    <h2>Add a new item:</h2>
+    <h2 ng-model="addEdit">{{addEdit}}</h2>
     <div id="add-frnd">
-        <input type="text" placeholder="Add friend.." ng-model="newFriend" />
+        <input type="text" placeholder="Add friend.." ng-model="newFriend" ng-enter="addFriend(newFriend)"/>
         <span class="fa-stack fa-lg" ng-click="addFriend(newFriend)">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-plus fa-stack-1x" title="Add a friend"></i>
@@ -62,7 +62,7 @@
             <span class="formspan">Amount:</span> <input type="number" name="amount" placeholder="How much?" ng-model="newExpense.amount" required>
         </div>
 
-        <div id="button" ng-click="addExpense(newExpense)">Add a new expense</div>
+        <div id="button" ng-click="addExpense(newExpense)" ng-model="addEditSave">{{addEditSave}}</div>
         <h2 class="error" ng-show="err">{{errorMsg}}</h2>
     </form>
     <div class="filter-block">
@@ -91,29 +91,25 @@
             <th class="table-btn">edit</th>
             <th class="table-btn">delete</th>
         </tr>
-        <tr ng-repeat="expense in allExpenses|filter:selectedFriend">
+        <tr ng-repeat="expense in allExpenses|filter:friendFilter|orderBy: 'dt':true">
             <td>{{expense.paymentType}}</td>
             <td>{{expense.expenseName}}</td>
             <td>{{expense.selectedFriends.join(',')}}</td>
-            <td>{{expense.dt}}</td>
+            <td>{{expense.dt|date:'mediumDate'}}</td>
             <td>{{expense.amount|convertCurrency:currencyFilter:expense.selectedCurrency}}</td>
-            <td><button ng-click="editExpense($index)">edit</button></td>
-            <td><button ng-click="deleteExpense($index)">delete</button></td>
+            <td><button ng-click="editExpense(expense)">edit</button></td>
+            <td><button ng-click="deleteExpense(expense)">delete</button></td>
         </tr>
 
     </table>
 
 </div>
-
-<script src='js/jquery.js'></script>
-
-<!--<script src="js/index.js"></script>-->
 <script src="lib/angular.min.js"></script>
 <script src="lib/ui-bootstrap-custom-tpls-0.13.0.min.js"></script>
 <script src="services/ExpenseService.js"></script>
 <script src="services/FriendService.js"></script>
 <script src="filters/filters.js"></script>
+<script src="directives/directives.js"></script>
 <script src="controllers/ExpenseController.js"></script>
 </body>
-
 </html>

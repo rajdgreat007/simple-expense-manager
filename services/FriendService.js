@@ -11,6 +11,12 @@ angular.module('services.friend',[])
         this.addFriend = function(friend){
             if(!alreadyAdded(friend)) allFriends.push(friend);
             console.log(allFriends)
+        };
+
+        this.fillDummyFriends = function(){
+            for(var i=0;i<5;i++){
+                allFriends.push(['raj','ravi','shankar','anu','diva'][i])
+            }
         }
 
     });

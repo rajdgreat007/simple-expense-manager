@@ -1,19 +1,41 @@
-angular.module('expenseManager',['services.expense','services.friend','filters','ui.bootstrap'])
+angular.module('expenseManager',['services.expense','services.friend','filters','directives','ui.bootstrap'])
     .controller('ExpenseController',['$scope', 'ExpenseService','FriendService',
         function($scope, ExpenseService,FriendService){
+        /*fill dummy data*/
+        /*FriendService.fillDummyFriends();
+        ExpenseService.fillDummyExpenses();*/
+
+        $scope.addEdit = 'Add a new item:';
+        $scope.addEditSave = 'Add a new expense';
         $scope.newExpense = {};
         $scope.allExpenses = ExpenseService.getAllExpenses();
         $scope.allFriends = FriendService.getAllFriends();
         $scope.addExpense = function(expense){
-            var res=ExpenseService.addExpense(expense);
-            if(res.valid)  {
-                $scope.newExpense = {};
-                $scope.err=false;
-                $scope.errorMsg = '';
-            }
-            else {
-                $scope.err=true;
-                $scope.errorMsg = res.error;
+            if($scope.addEditSave.indexOf('Save')==0){
+                var res = ExpenseService.editExpense($scope.newExpense);
+                if(res.valid)  {
+                    $scope.newExpense = {};
+                    $scope.err=false;
+                    $scope.errorMsg = '';
+                    $scope.addEdit = 'Add a new item:';
+                    $scope.addEditSave = 'Add a new expense';
+                    $scope.selectedExpenseIndex = null;
+                }
+                else {
+                    $scope.err=true;
+                    $scope.errorMsg = res.error;
+                }
+            }else{
+                var res=ExpenseService.addExpense(expense);
+                if(res.valid)  {
+                    $scope.newExpense = {};
+                    $scope.err=false;
+                    $scope.errorMsg = '';
+                }
+                else {
+                    $scope.err=true;
+                    $scope.errorMsg = res.error;
+                }
             }
         };
         $scope.addFriend = function(friend){
@@ -21,9 +43,19 @@ angular.module('expenseManager',['services.expense','services.friend','filters',
             $scope.newFriend = "";
         };
 
-        /*fill dummy data*/
+        $scope.editExpense = function(expense){
+            $scope.addEdit = 'Edit item:';
+            $scope.addEditSave = 'Save expense';
+            for(var prop in expense){
+                if(expense.hasOwnProperty(prop)){
+                    $scope.newExpense[prop] = expense[prop];
+                }
+            }
+        };
 
-
+        $scope.deleteExpense = function(expense){
+            ExpenseService.deleteExpense(expense);
+        };
 
 
 
