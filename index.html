@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Simple expense manager project - CodePen</title>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" media="screen" type="text/css"/>
 </head>
 
@@ -22,7 +23,7 @@
     </div>
     <form>
         <div>
-            <span>Type:</span>
+            <span class="formspan">Type:</span>
             <select name="type" ng-model="newExpense.paymentType" required>
                 <option value="card">Card</option>
                 <option value="cash">Cash</option>
@@ -30,7 +31,7 @@
             </select>
         </div>
         <div>
-            <span>Add friend:</span>
+            <span class="formspan">Add friend:</span>
             <select name="friend" multiple="multiple" ng-model="newExpense.selectedFriends" required>
                 <option ng-repeat="friend in allFriends" value="{{friend}}">{{friend}}</option>
             </select>
@@ -38,19 +39,19 @@
         </div>
 
         <div>
-            <span>Name:</span> <input type="text" name="item-name" placeholder="What did you spend on?" ng-model="newExpense.expenseName" required>
+            <span class="formspan">Name:</span> <input type="text" name="item-name" placeholder="What did you spend on?" ng-model="newExpense.expenseName" required>
             <div class="error-msg"><!--Please select an option--></div>
         </div>
 
         <div>
-            <span>Date:</span>
+            <span class="formspan">Date:</span>
             <input type="text"  datepicker-popup="{{format}}" ng-model="newExpense.dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required/>
             <button type="button" class="select-button" ng-click="open($event)">select</button>
 
         </div>
 
         <div>
-            <span>Currency:</span>
+            <span class="formspan">Currency:</span>
             <select name="currency" ng-model="newExpense.selectedCurrency" required>
                 <option value="dollar">USD</option>
                 <option value="rupee">INR</option>
@@ -58,7 +59,7 @@
             </select>
         </div>
         <div>
-            <span>Amount:</span> <input type="number" name="amount" placeholder="How much?" ng-model="newExpense.amount" required>
+            <span class="formspan">Amount:</span> <input type="number" name="amount" placeholder="How much?" ng-model="newExpense.amount" required>
         </div>
 
         <div id="button" ng-click="addExpense(newExpense)">Add a new expense</div>
@@ -80,7 +81,7 @@
             </select>
         </div>
     </div>
-    <table>
+    <table id="expenseTable">
         <tr>
             <th id="type" class="center">type</th>
             <th>name</th>

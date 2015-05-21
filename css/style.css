@@ -26,20 +26,20 @@ body {
   background: #26c281;
 }
 
-table {
+#expenseTable {
   text-align: left;
   width: 900px;
   margin: 0 auto 30px;
   border-radius: 0 0 3px 3px;
   background-color: #fff;
 }
-table th {
+#expenseTable th {
   padding: 10px;
 }
-table tr:nth-child(odd) {
+#expenseTable tr:nth-child(odd) {
   background-color: #F5F7FA;
 }
-table td {
+#expenseTable td {
   padding: 10px 15px;
   color: #434A54;
   font-size: 14px;
@@ -178,7 +178,7 @@ form div {
   margin-right: 10px;
   position: relative;
 }
-form span {
+form .formspan {
   font-size: 1.2em;
   font-weight: 100;
   display: inline-block;
